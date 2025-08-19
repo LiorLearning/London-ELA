@@ -3,10 +3,10 @@ import { BlendingQuestion, SpeechQuestion, Question } from './types';
 export const blendingQuestions: BlendingQuestion[] = [
   {
     id: 1,
-    word: 'Kaida',
-    imageUrl: '✨📚',
-    phonemes: ['K', 'ai', 'da'],
-    explanation: "Blend the sounds K-ai-da to make 'Kaida'!",
+    word: 'London',
+    imageUrl: '🍪✨',
+    phonemes: ['L', 'on', 'don'],
+    explanation: "Blend the sounds L-on-don to make 'London'!",
   },
 ];
 
@@ -14,10 +14,10 @@ export const speechQuestions: SpeechQuestion[] = [
   {
     id: 1,
     text:
-      "Kaida found a magical gate blocking his path in the library's secret chamber. The wise librarian appeared beside him with a gentle smile. 'You must make the correct choice to open this gate,' she explained carefully. 'Speak the magic words and watch it shine with brilliant light.' Kaida nodded bravely, touched the gate gently, and whispered the ancient spell. Suddenly, the gate began to shine brightly, opening to reveal floating books beyond.",
-    imageUrl: '✨🚪📚💎🌟',
-    expectedWords: ['gate', 'wise', 'make', 'shine'],
-    explanation: 'Excellent reading! You found all the silent e words in Kaida\'s magical library adventure.',
+      "London discovered a secret baking chamber hidden in her cosmic cookie cave on the moon. Her alien teammates gathered around with huge glowing eyes, ready to help. 'You must bake the perfect cosmic cookies,' her best friend explained sweetly. 'Mix the stardust flour and watch it shine with sparkly light.' London smiled brightly, touched the magical mixing bowl gently, and whispered the secret recipe. Suddenly, the dough began to shine brilliantly, transforming into cookies that tasted like stars.",
+    imageUrl: '🍪🌙👽✨🌟',
+    expectedWords: ['bake', 'shine', 'like', 'huge'],
+    explanation: 'Amazing reading! You found all the silent e words in London\'s cosmic cookie adventure.',
   },
 ];
 
@@ -25,33 +25,33 @@ export const longAQuestions: Question[] = [
   {
     id: 1,
     word: 'name',
-    imageUrl: '📜✨',
+    imageUrl: '🍪✨',
     isSpelling: true,
     correctAnswer: 'name',
-    explanation: 'Kaida\'s magical "name" glows on the ancient scroll - the long a sound with silent e at the end!',
+    explanation: 'London\'s magical "name" sparkles on the cosmic cookie recipe - the long a sound with silent e at the end!',
     aiHook: {
       targetWord: 'name',
       intent: 'spelling',
-      baseLine: 'Kaida discovers his identity written in golden letters on an enchanted library registry.',
+      baseLine: 'London discovers her identity written in stardust letters on a magical cookie recipe scroll.',
       questionLine: 'Listen and type the long a word with silent e for what you are called.',
       validationWord: 'name',
-      imagePrompt: 'Ancient glowing scroll showing Kaida\'s NAME written in golden magical letters in the mystical library, floating books and magical atmosphere visible; clearly shows the name on parchment.'
+      imagePrompt: 'Magical glowing cookie recipe showing London\'s NAME written in sparkling stardust letters in her cosmic cookie cave, alien teammates and floating flour visible; clearly shows the name on the recipe.'
     }
   },
   {
     id: 2,
-    word: 'lake',
-    imageUrl: '🏞️✨',
+    word: 'bake',
+    imageUrl: '🍪✨',
     isSpelling: true,
-    correctAnswer: 'lake',
-    explanation: 'A mystical "lake" of shimmering knowledge surrounds the library - the long a sound with silent e at the end!',
+    correctAnswer: 'bake',
+    explanation: 'London loves to "bake" cosmic cookies that taste like stardust - the long a sound with silent e at the end!',
     aiHook: {
-      targetWord: 'lake',
+      targetWord: 'bake',
       intent: 'spelling',
-      baseLine: 'Kaida gazes upon the magical waters that reflect ancient wisdom around the library tower.',
-      questionLine: 'Listen and type the long a word with silent e for the body of water.',
-      validationWord: 'lake',
-      imagePrompt: 'Mystical glowing LAKE surrounding the library tower with reflections of magical knowledge in the water, floating books visible above the lake; composition highlights the magical lake clearly.'
+      baseLine: 'London uses the magical sun rays as her cosmic oven to create the most delicious cookies in the galaxy.',
+      questionLine: 'Listen and type the long a word with silent e for cooking cookies.',
+      validationWord: 'bake',
+      imagePrompt: 'London BAKING cosmic cookies using magical sun rays as an oven on the moon, alien teammates watching with glowing eyes, flour floating like cosmic dust; composition highlights the baking action clearly.'
     }
   },
 ];
@@ -63,62 +63,62 @@ export const questions: Question[] = [
     imageUrl: '🎂✨',
     isSpelling: true,
     correctAnswer: 'cake',
-    explanation: 'A magical "cake" with sparkles - the long a sound with silent e at the end!',
+    explanation: 'A cosmic "cake" made of stardust and moonbeams - the long a sound with silent e at the end!',
     aiHook: {
       targetWord: 'cake',
       intent: 'spelling',
-      baseLine: 'Kaida discovers a mystical birthday celebration in the library with a glowing dessert.',
+      baseLine: 'London creates a special birthday celebration on the moon with a glowing cosmic dessert.',
       questionLine: 'Listen and type the long a word with silent e for the sweet treat.',
       validationWord: 'cake',
-      imagePrompt: 'Magical glowing CAKE with sparkles and candles in the mystical library, floating books in background; clearly shows a decorated cake with magical properties.'
+      imagePrompt: 'Magical cosmic CAKE made of stardust with sparkly candles on the moon, London and alien teammates celebrating, sugar crystals shimmering around; clearly shows a decorated cake with cosmic properties.'
     }
   },
   {
     id: 2,
     word: 'make',
-    imageUrl: '🔨✨',
+    imageUrl: '🍪✨',
     isSpelling: true,
     correctAnswer: 'make',
-    explanation: 'Kaida can "make" magical spells - the long a sound with silent e at the end!',
+    explanation: 'London can "make" the most delicious cosmic cookies - the long a sound with silent e at the end!',
     aiHook: {
       targetWord: 'make',
       intent: 'spelling',
-      baseLine: 'Kaida crafts powerful enchantments using ancient tools and mystical ingredients.',
+      baseLine: 'London crafts amazing cookies using cosmic ingredients and magical baking tools.',
       questionLine: 'Listen and type the long a word with silent e for creating something.',
       validationWord: 'make',
-      imagePrompt: 'Kaida using magical tools to MAKE enchantments in the library workshop, glowing crafting materials visible; composition shows the act of creating magic.'
+      imagePrompt: 'London using magical baking tools to MAKE cosmic cookies in her moon cave, sparkling ingredients floating around; composition shows the act of creating delicious treats.'
     }
   },
   {
     id: 3,
     word: 'take',
-    imageUrl: '👋✨',
+    imageUrl: '🍪✨',
     isSpelling: true,
     correctAnswer: 'take',
-    explanation: 'Kaida will "take" the ancient book - the long a sound with silent e at the end!',
+    explanation: 'London will "take" a cosmic cookie from her secret stash - the long a sound with silent e at the end!',
     aiHook: {
       targetWord: 'take',
       intent: 'spelling',
-      baseLine: 'Kaida reaches for a glowing tome from the highest shelf in the enchanted library.',
+      baseLine: 'London reaches for a glowing stardust cookie from her secret crater stash on the moon.',
       questionLine: 'Listen and type the long a word with silent e for grabbing something.',
       validationWord: 'take',
-      imagePrompt: 'Kaida reaching to TAKE a glowing ancient book from a high mystical library shelf, magical light emanating from the book; focus on the action of taking.'
+      imagePrompt: 'London reaching to TAKE a glowing cosmic cookie from her secret moon crater stash, magical sparkles emanating from the cookie; focus on the action of taking.'
     }
   },
   {
     id: 4,
     word: 'game',
-    imageUrl: '🎮✨',
+    imageUrl: '🎲✨',
     isSpelling: true,
     correctAnswer: 'game',
-    explanation: 'The library has a magical "game" of riddles - the long a sound with silent e at the end!',
+    explanation: 'London plays a fun cookie-decorating "game" with her alien friends - the long a sound with silent e at the end!',
     aiHook: {
       targetWord: 'game',
       intent: 'spelling',
-      baseLine: 'Enchanted playing pieces float around Kaida as he solves mystical puzzles.',
+      baseLine: 'Floating cookie shapes and decorating tools surround London as she plays with her alien teammates.',
       questionLine: 'Listen and type the long a word with silent e for a fun activity.',
       validationWord: 'game',
-      imagePrompt: 'Magical floating GAME pieces and puzzle elements around Kaida in the mystical library, glowing riddles visible; composition highlights the magical game elements.'
+      imagePrompt: 'Magical floating cookie decorating GAME pieces around London and alien teammates on the moon, glowing sprinkles and icing visible; composition highlights the fun game elements.'
     }
   },
 ];

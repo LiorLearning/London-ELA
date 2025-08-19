@@ -265,8 +265,8 @@ Give a brief, friendly response that nudges them without giving the answer.`;
   const hookTargetWord = aiCfg?.targetWord || (isSecondRegularStep ? 'tome' : (isFirstRegularStep ? 'scroll' : (currentRegularQuestion?.word || currentLongAQuestion?.word || '')));
   const hookQuestionLine = aiCfg?.questionLine || (isFirstRegularStep ? 'Listen and type the word' : 'Listen and type the word');
   const hookBaseLine = aiCfg?.baseLine || (isFirstRegularStep
-    ? 'With ancient knowledge gained, Kaida moves deeper into the mystical library corridors.'
-    : 'The library echoes with whispered secrets as Kaida continues his quest for wisdom.');
+    ? 'With cosmic cookies baked to perfection, London explores deeper into her magical moon cave.'
+    : 'The cookie cave sparkles with stardust as London continues her sweet cosmic adventure.');
   const hookValidationWord = aiCfg?.validationWord || (isSecondRegularStep ? 'tome' : (isFirstRegularStep ? 'scroll' : (currentLongAQuestion?.word || 'word')));
   const hookIntent = aiCfg?.intent || (isFirstRegularStep ? 'spelling' : 'spelling');
 
@@ -350,7 +350,7 @@ Give a brief, friendly response that nudges them without giving the answer.`;
     const base = params.baseLine || '';
     const ask = params.questionLine || '';
     // Keep short; /api/image will wrap with kid-safe epic style
-    return `Clear, unmistakable depiction of the word "${word}" inside our mystical Library of Time adventure. Context: ${context || base}. Hint from tutor: ${ask}. Ensure the subject visually communicates "${word}" at a glance.`;
+    return `Clear, unmistakable depiction of the word "${word}" inside London's cosmic cookie adventure on the moon. Context: ${context || base}. Hint from tutor: ${ask}. Ensure the subject visually communicates "${word}" at a glance.`;
   };
 
   const ensureQuestionImage = async (key: string, explicitPrompt?: string) => {
@@ -658,22 +658,22 @@ Inputs you may reference:
 - Story snippets: the recent adventure turns below
 - Most recent event: the event provided below
 - Use simple aliases for complex names:
-  Wise Guardian → owl; mystical chamber → hall; ancient archive → den; magical light → glow; knowledge/wisdom → lore
+  Alien Friend → teammate; cosmic chamber → cave; cookie stash → den; magical light → sparkle; baking/cooking → creating
 
 Strict rules:
 0) Event anchoring: Build directly on the most recent event; include at least one concrete detail from it. Do not change the location/scene or introduce unrelated new objects.
 1) Audience/decodability: Kindergarten. Mostly CVC and common sight words. Strong silent e focus (long a words). Do not use difficult to speak words like bright etc., since this is a reading exercise for kindergarten students.
 2) Length: EXACTLY 5 lines; each line 5–6 words; total 25–30 words.
-4) Include these target words exactly: "gate", "wise", "make", "shine".
+4) Include these target words exactly: "bake", "take", "make", "cake".
 5) Keep it lively.
-6) Name usage: You may use "Kaida," "owl," and "cat." Avoid other proper names.
+6) Name usage: You may use "London," "alien," and "friend." Avoid other proper names.
 8) Clarity: Very short sentences; vary stems (do not repeat the same opening more than twice).
 9) Ending: Finish with a tiny hook / cliffhanger or next step (≤ 6 words), preferably a question.
 10) Output format: Return ONLY the 5 lines separated by newline characters. No titles, labels, or extra text.`
           },
           {
             role: 'user',
-            content: `Adventure context (most recent last):\n${contextText}\n\nMost recent event to build on:\n${lastEvent}\n\nTarget words to include exactly: red, net, deck.\n\nWrite the passage now following the rules above. Use at least one concrete detail from the most recent event, stay in the same scene, and avoid unrelated new objects or places. Return only the five lines.`
+            content: `Adventure context (most recent last):\n${contextText}\n\nMost recent event to build on:\n${lastEvent}\n\nTarget words to include exactly: bake, shine, like, huge.\n\nWrite the passage now following the rules above. Use at least one concrete detail from the most recent event, stay in the same scene, and avoid unrelated new objects or places. Return only the five lines.`
           }
         ];
 
@@ -721,7 +721,7 @@ Strict rules:
         const contextText = storyContext.join('\n');
         const lastEvent = getLastEvent();
         const targetWord = currentLongAQuestion.word; // "gate"
-        const baseLine = currentLongAQuestion.aiHook?.baseLine || 'A shimmering starlight doorway appears in the cavern wall.';
+        const baseLine = currentLongAQuestion.aiHook?.baseLine || 'A sparkling cosmic portal appears in the cookie cave wall.';
         
         const messages = [
           {
@@ -753,7 +753,7 @@ Strict rules:
         console.error('Error generating Long A passage:', error);
         if (!cancelled && currentLongAQuestion) {
           // Fallback to base line
-          const fallback = currentLongAQuestion.aiHook?.baseLine || 'A shimmering starlight doorway appears in the cavern wall. The baby alien points to the glowing opening.';
+          const fallback = currentLongAQuestion.aiHook?.baseLine || 'A sparkling cosmic portal appears in the cookie cave wall. London\'s alien friend points to the glowing opening.';
           setLongAPassage(fallback);
           setHasGeneratedLongAPassage(true);
           setIsLongAPassageLoading(false);
@@ -866,8 +866,8 @@ Strict rules:
         const data = await res.json();
         if (!cancelled) {
           const summary = (data.reply || '').trim() || (isFirstRegularStep
-            ? '"Look! The misty corridors stretch endlessly," whispers the glowing owl. "Here\'s a clue, Kaida: listen and type where we\'re traveling," echoes through the ancient halls.'
-            : '"The archives echo with mystery," says the wise owl. "Here\'s a clue, Kaida: listen and type the magical word," resonates through the library.');
+            ? '"Look! The cookie cave sparkles endlessly," whispers London\'s alien friend. "Here\'s a clue, London: listen and type what we\'re baking," echoes through the cosmic chamber.'
+            : '"The moon craters shimmer with magic," says the friendly alien. "Here\'s a clue, London: listen and type the sweet word," resonates through the cookie cave.');
           setAiSummary(summary);
           try { setHookForStep('3', summary); } catch {}
           setHasGeneratedSummary(true);
@@ -875,8 +875,8 @@ Strict rules:
       } catch {
         if (!cancelled) {
           setAiSummary(isFirstRegularStep
-            ? '"Look! The misty corridors stretch endlessly," whispers the glowing owl. "Here\'s a clue, Kaida: listen and type where we\'re traveling," echoes through the ancient halls.'
-            : '"The archives echo with mystery," says the wise owl. "Here\'s a clue, Kaida: listen and type the magical word," resonates through the library.');
+            ? '"Look! The cookie cave sparkles endlessly," whispers London\'s alien friend. "Here\'s a clue, London: listen and type what we\'re baking," echoes through the cosmic chamber.'
+            : '"The moon craters shimmer with magic," says the friendly alien. "Here\'s a clue, London: listen and type the sweet word," resonates through the cookie cave.');
           setHasGeneratedSummary(true);
         }
       } finally {
@@ -985,7 +985,7 @@ Strict rules:
           const messages = [
             {
               role: 'system',
-              content: 'You are a warm, enthusiastic narrator for Grade 2 readers. Write 1-2 short sentences (15-20 words total) that: 1) Celebrate their correct spelling (2-3 words like "Perfect!" or "Yes!"), 2) Reference what just happened in the scene, 3) Ask what happens next using that word (be direct: "Now use \'gate\' to tell what happens next!"). Add one small emoji. Stay connected to the immediate scene context.'
+              content: 'You are a warm, enthusiastic narrator for Grade 2 readers. Write 2-3 short sentences (20-30 words total) that: 1) Reference what just happened and continue the plot by adding exciting details, keeping it coherent and ending on a teaser if natural, 2) Ask what happens next using that word (be direct: "Now use \'gate\' to tell what happens next!"). Add one small emoji. Make the overall plot exciting so that the user is excited to continue.'
             },
             {
               role: 'user',
@@ -1051,7 +1051,7 @@ Strict rules:
     try {
       const targetWord = hookValidationWord;
       const messages = [
-        { role: 'system', content: `You are Kaida's fun AI companion helping kids write their mystical Library of Time adventure story. Your job is to check if they used the target word "${targetWord}" in their sentence and respond naturally like a friendly narrator. 
+        { role: 'system', content: `You are London's fun AI companion helping kids write their cosmic cookie adventure story on the moon. Your job is to check if they used the target word "${targetWord}" in their sentence and respond naturally like a friendly narrator. 
 
 Respond as minified JSON: {"status":"valid|invalid|help","message":"<your response>"}
 
@@ -1061,7 +1061,7 @@ RULES:
 - "help": If they ask for help or seem stuck, give a creative prompt about what ${targetWord} could do in the adventure.
 
 Be conversational, not scripted. Acknowledge what they actually wrote. Keep responses under 25 words.` },
-        { role: 'user', content: `Sentence: ${text}\n\nCurrent story context: ${storyContext.join(' ')}\n\nHelp the child continue Kaida's mystical Library of Time adventure using the word "${targetWord}".` }
+        { role: 'user', content: `Sentence: ${text}\n\nCurrent story context: ${storyContext.join(' ')}\n\nHelp the child continue London's cosmic cookie adventure on the moon using the word "${targetWord}".` }
       ];
       const res = await fetch('/api/chat', {
         method: 'POST',
@@ -1122,7 +1122,7 @@ Be conversational, not scripted. Acknowledge what they actually wrote. Keep resp
       }
       
       if (/help|hint|example|idk|don\'?t know/i.test(text)) {
-        return { status: 'help', message: `No worries! What if Kaida's ${targetWord} could help him explore the mystical library? How might he use it?` };
+        return { status: 'help', message: `No worries! What if London's ${targetWord} could help her in the cosmic cookie adventure? How might she use it?` };
       }
       return { status: 'invalid', message: `Use the word "${targetWord}" in your sentence.` };
     } catch (error) {
@@ -1170,7 +1170,7 @@ Be conversational, not scripted. Acknowledge what they actually wrote. Keep resp
       setValidationMessage(result.message || 'Try again');
       void playElevenTTS(result.message || 'Try again');
     } else {
-      const msg = result.message || `No worries! What if Kaida\'s ${hookTargetWord} could help him explore the mystical library? How might he use it?`;
+      const msg = result.message || `No worries! What if London\'s ${hookTargetWord} could help her in the cosmic cookie adventure? How might she use it?`;
       setValidationMessage(msg);
       setContinuationHeader(msg);
       void playElevenTTS(msg);
@@ -3025,7 +3025,7 @@ Be conversational, not scripted. Acknowledge what they actually wrote. Keep resp
                     <textarea
                       value={speechContinuationInput}
                       onChange={(e) => setSpeechContinuationInput(e.target.value)}
-                      placeholder="What happens next in Kaida's adventure?"
+                      placeholder="What happens next in London's cosmic cookie adventure?"
                       rows={2}
                       style={{
                         width: '100%',
@@ -3177,7 +3177,7 @@ Be conversational, not scripted. Acknowledge what they actually wrote. Keep resp
                   color: '#1f2937',
                   marginBottom: '4.8px'
                 }}>
-                  🎧 Listen to Kaida's word!
+                  🎧 Listen to London's word!
                 </div>
                 <div style={{ fontSize: '13px', color: '#6b7280', fontWeight: '500' }}>
                   Type the word you hear.
@@ -3451,7 +3451,7 @@ Be conversational, not scripted. Acknowledge what they actually wrote. Keep resp
                     color: '#1f2937',
                     marginBottom: '4.8px'
                   }}>
-                    🎧 Listen to Kaida's word!
+                    🎧 Listen to London's word!
                   </div>
                   <div style={{ fontSize: '14.4px', color: '#6b7280', fontWeight: '500' }}>
                     What sound does it start with?

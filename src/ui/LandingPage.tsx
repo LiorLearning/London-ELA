@@ -32,12 +32,12 @@ export function LandingPage({ onSelectStory, onCreateNewStory }: Props): JSX.Ele
       pages: undefined
     },
     {
-      id: 'echo-library',
-      title: 'Echo in the Library of Time',
-      author: 'by Gregory, 3rd grade',
-      pages: '3 pages',
-      emoji: '📚',
-      imageUrl: 'https://tutor.mathkraft.org/_next/image?url=%2Fapi%2Fproxy%3Furl%3Dhttps%253A%252F%252Fd1ptidrpttdm41.cloudfront.net%252F106-Gregory%252F20250819_152705.png&w=3840&q=75&dpl=dpl_2uGXzhZZsLneniBZtsxr7PEabQXN',
+      id: 'cosmic-cookies',
+      title: 'London and the Cosmic Cookie',
+      author: 'by London, 3rd grader',
+      pages: '5 pages',
+      emoji: '🍪',
+      imageUrl: 'https://tutor.mathkraft.org/_next/image?url=%2Fapi%2Fproxy%3Furl%3Dhttps%253A%252F%252Fdubeus2fv4wzz.cloudfront.net%252Fimages%252F20250819_213937_image.png&w=3840&q=75&dpl=dpl_2uGXzhZZsLneniBZtsxr7PEabQXN',
       color: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
       isCreateNew: false
     }
@@ -77,7 +77,8 @@ export function LandingPage({ onSelectStory, onCreateNewStory }: Props): JSX.Ele
     pages,
     badge,
     showPublishButton = false,
-    onPublish
+    onPublish,
+    isClickable = true
   }: { 
     title: string; 
     emoji: string; 
@@ -90,12 +91,13 @@ export function LandingPage({ onSelectStory, onCreateNewStory }: Props): JSX.Ele
     badge?: string;
     showPublishButton?: boolean;
     onPublish?: () => void;
+    isClickable?: boolean;
   }) => (
     <div
-      onClick={onClick}
+      onClick={isClickable ? onClick : undefined}
       style={{
         borderRadius: 20,
-        cursor: 'pointer',
+        cursor: isClickable ? 'pointer' : 'default',
         transition: 'all 200ms ease',
         position: 'relative',
         display: 'flex',
@@ -104,16 +106,24 @@ export function LandingPage({ onSelectStory, onCreateNewStory }: Props): JSX.Ele
         gap: 16
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'translateY(-4px) scale(1.02)';
+        if (isClickable) {
+          e.currentTarget.style.transform = 'translateY(-4px) scale(1.02)';
+        }
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.transform = 'translateY(0px) scale(1)';
+        if (isClickable) {
+          e.currentTarget.style.transform = 'translateY(0px) scale(1)';
+        }
       }}
       onMouseDown={(e) => {
-        e.currentTarget.style.transform = 'translateY(-2px) scale(0.98)';
+        if (isClickable) {
+          e.currentTarget.style.transform = 'translateY(-2px) scale(0.98)';
+        }
       }}
       onMouseUp={(e) => {
-        e.currentTarget.style.transform = 'translateY(-4px) scale(1.02)';
+        if (isClickable) {
+          e.currentTarget.style.transform = 'translateY(-4px) scale(1.02)';
+        }
       }}
     >
       {imageUrl ? (
@@ -332,7 +342,7 @@ export function LandingPage({ onSelectStory, onCreateNewStory }: Props): JSX.Ele
             fontFamily: 'Quicksand, system-ui, sans-serif',
             textShadow: '0 2px 4px rgba(0,0,0,0.05)'
           }}>
-            📚 Welcome back, Gregory the author!
+            🍪 Welcome back, London the cosmic baker!
           </h1>
         </div>
 
@@ -373,7 +383,7 @@ export function LandingPage({ onSelectStory, onCreateNewStory }: Props): JSX.Ele
                 imageUrl={story.imageUrl}
                 author={story.author}
                 pages={story.pages}
-                showPublishButton={story.id === 'echo-library'}
+                showPublishButton={story.id === 'cosmic-cookies'}
                 onPublish={() => handlePublishStory(story.id)}
                 onClick={() => story.isCreateNew ? handleCreateNew() : handleStorySelect(story.id)}
               />
@@ -419,6 +429,7 @@ export function LandingPage({ onSelectStory, onCreateNewStory }: Props): JSX.Ele
                 pages={story.pages}
                 badge={story.badge}
                 onClick={() => handleStorySelect(story.id)}
+                isClickable={false}
               />
             ))}
           </div>

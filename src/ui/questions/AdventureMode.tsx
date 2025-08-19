@@ -14,7 +14,7 @@ export function AdventureMode({ onAdventureMessage, onStoryUpdate, adventureMess
   const { state: storyState, appendMessage: appendStoryMessage, reset: resetStory, consumePendingAdventureChat, setMetadata } = useStory();
   // Use parent-provided messages or default/local persisted
   const defaultMessages: Array<{ role: 'ai' | 'student'; text: string; isImage?: boolean; isLoading?: boolean; imageUrl?: string }> = [
-    { role: 'ai' as const, text: "📚✨ Gregory! I'm thrilled to continue our mystical adventure in the Library of Time! Kaida just solved the diphthong puzzles and safely landed after falling through the glowing hole. The wise owl awaits with a new riddle, and the swirling timelines in your cloak pulse with ancient magic! 🦉⏳ What mysterious knowledge should we seek next in these echoing halls?" }
+    { role: 'ai' as const, text: "🍪✨ London! I'm your cosmic baking sidekick, ready for another sweet adventure on the moon! Your secret cookie cave is sparkling with sugar crystals, and the alien teammates are excited to help you bake magical cookies that taste like stardust! 🌙👽 What delicious cosmic cookies should we create next in your celestial kitchen?" }
   ];
   const [localAdventureMessages, setLocalAdventureMessages] = useState<Array<{ role: 'ai' | 'student'; text: string; isImage?: boolean; isLoading?: boolean; imageUrl?: string }>>(
     (storyState?.adventureMessages?.length ?? 0) > 0
@@ -51,14 +51,14 @@ export function AdventureMode({ onAdventureMessage, onStoryUpdate, adventureMess
     setting?: string;
     recentEvent?: string;
   }>({
-    type: 'mystical library adventure with time magic and ancient knowledge',
-    protagonist: 'Kaida Stormscroll (boy, male librarian\'s apprentice with dark hair, cloak of swirling past timelines, and floating spellbooks)',
-    sidekick: 'None introduced yet',
-    teammates: 'None included in this adventure',
-    setting: 'Library of Time – misty, ancient structure with glowing books, echoing halls, and time-bent magic',
-    goal: 'escape the cursed fate and unravel the mysteries of time magic while solving puzzles and riddles',
-    villain: 'The Archivillain – a corrupted book spirit twisting stories to trap heroes in doomed fates',
-    recentEvent: 'Kaida discovered a cursed book bearing his name predicting his end by sunset, cut its spine, entered a shadowy world, faced a boy version of himself, solved diphthong word puzzles, fell into a glowing hole, and landed safely as a glowing owl offered a new riddle'
+    type: 'cosmic cookie baking adventure on the moon with alien teammates',
+    protagonist: 'London (Jessica Moynihan Washer, 8 years old but carries herself like a teenager, in pink sparkly dresses, imaginative and sweet like her cookies)',
+    sidekick: 'Best friend in a white dress - the perfect baking partner for kneading dough, sprinkling sugar, and taste-testing cosmic cookies',
+    teammates: 'Baby alien (prefers soft, chewy cookies), Medium alien (loves crunchy edges with gooey centers), Giant alien (eats cookies the size of meteor craters) - all with green sparkly skin and huge eyes that light up',
+    setting: 'London\'s adventures unfold on the moon, where flour floats like cosmic dust and sugar crystals shimmer brighter than starlight. Magical rays of the sun double as her oven, and the moon\'s craters hold secret stashes of cookies',
+    goal: 'bake magical cookies that taste like stardust and share sweet cosmic adventures with alien friends while exploring the wonders of the moon',
+    villain: 'None - this is a wholesome baking adventure focused on creativity, friendship, and delicious cosmic treats',
+    recentEvent: 'London opened her secret cookie cave on the moon, where sugar crystals sparkled like stars and her alien teammates gathered excitedly, their huge eyes lighting up as they prepared to help bake the most magical cookies in the galaxy'
   });
   const ADVENTURE_IMAGE_OVERLAY_OPACITY = 0.45;
   const adventureScrollRef = useRef<HTMLDivElement | null>(null);
@@ -91,7 +91,7 @@ export function AdventureMode({ onAdventureMessage, onStoryUpdate, adventureMess
     const lowerAI = aiResponse.toLowerCase();
     
     // Check for interest-based adventure selection
-    const interests = ['anime', 'pokemon', 'gaming', 'smash bros', 'magic', 'library', 'time', 'books', 'dragons', 'ninjas', 'heroes', 'battles', 'adventure', 'mystical'];
+    const interests = ['cookies', 'baking', 'cooking', 'aliens', 'space', 'moon', 'stars', 'cosmic', 'planets', 'piano', 'books', 'ballet', 'gymnastics', 'pink', 'sparkles', 'sweet', 'adventure'];
     const selectedInterest = interests.find(interest => lowerUser.includes(interest));
     
     if (selectedInterest && adventureState === 'new') {
@@ -352,8 +352,8 @@ export function AdventureMode({ onAdventureMessage, onStoryUpdate, adventureMess
     if (!text) return;
     if (text.toLowerCase() === 'image' || text.toLowerCase() === 'create image' || text.toLowerCase().startsWith('create image')) {
       const imagePrompt = text.toLowerCase() === 'image' || text.toLowerCase() === 'create image'
-        ? 'Kaida Stormscroll (boy) in librarian robes with dark hair and cloak of swirling timelines, surrounded by floating spellbooks in the mystical Library of Time with golden magical light and ancient atmosphere'
-        : text.replace(/^create image\s*/i, '').trim() || 'Kaida Stormscroll (boy) in librarian robes with dark hair and cloak of swirling timelines, surrounded by floating spellbooks in the mystical Library of Time with golden magical light and ancient atmosphere';
+        ? 'London (8-year-old girl in pink sparkly dress) in her cosmic cookie cave on the moon, surrounded by floating flour like cosmic dust, sugar crystals sparkling like stars, alien teammates with green sparkly skin and huge glowing eyes helping to bake magical cookies, with the sun\'s magical rays serving as an oven in the background'
+        : text.replace(/^create image\s*/i, '').trim() || 'London (8-year-old girl in pink sparkly dress) in her cosmic cookie cave on the moon, surrounded by floating flour like cosmic dust, sugar crystals sparkling like stars, alien teammates with green sparkly skin and huge glowing eyes helping to bake magical cookies, with the sun\'s magical rays serving as an oven in the background';
       updateAdventureMessages(prev => [...prev, { role: 'student', text: `🌄 ${text}` }]);
       onAdventureMessage?.(text);
       setAdventureInput('');
@@ -431,7 +431,7 @@ Goal: Create fast-paced, mission-oriented adventures with lovable characters, th
 
 Ongoing Adventure: Show excitement, prompt me for what happens next, and occasionally suggest 1–2 creative ideas to spark the next turn.
 
-New Adventure: Ask about my interests (anime, gaming, mystical adventures, time magic, etc.). Offer:
+New Adventure: Ask about my interests (baking, space, cosmic adventures, sweet treats, etc.). Offer:
 - Interest-based adventure (protagonist + villain + clear goal)
 - Another interest-based adventure
 - "Create-your-own" adventure (I invent the setting, sidekick, and villain)
@@ -442,11 +442,11 @@ Adventure State: ${adventureState === 'new' ? 'NEW_ADVENTURE' : adventureState =
 
 Current Adventure Context: ${JSON.stringify(currentAdventure)}${storyEventsContext}
 
-Student Profile (Gregory): Loves Super Smash Bros. Ultimate, Pokémon, anime (One Piece, Naruto, Dragon Ball, My Hero Academia, Demon Slayer, Jujutsu Kaisen), and Avatar: The Last Airbender. Prefers realistic cartoon-anime fusion art with glowing effects, soft shadows, and dramatic lighting. Enjoys mystical library adventures with time magic and ancient knowledge themes.
+Student Profile (London): Loves baking cosmic cookies that taste like stardust, reading a book a week, playing piano with sweet melodies, and was once a star in soccer, gymnastics, ballet, and cheerleading. Now she channels that energy into whisking, mixing, and decorating magical cookies. Always in pink dresses with sparkly accents. Big for her age (8 but carries herself like a teenager), imaginative, radiant, and sweet just like her cookies.
 
 Character Creation: When creating sidekicks/characters, let me choose names with suggestions, offer trait lists (funny, optimistic, resilient, etc.), and ask me to describe appearance for image creation.
 
-Remember: I'm your loyal companion - speak as "I" and refer to the student as "you" or Gregory. Always end with excitement and either a cliffhanger or a single engaging question. Keep responses mystical and dramatic to match Gregory's interests in anime, gaming, and magical library adventures with time manipulation themes.`
+Remember: I'm your loyal companion - speak as "I" and refer to the student as "you" or London. Always end with excitement and either a cliffhanger or a single engaging question. Keep responses sweet and magical to match London's love of baking, cosmic adventures, and creative storytelling with cookies that taste like stardust.`
         },
         ...currentMessages
           .slice(-30)
@@ -483,13 +483,13 @@ Remember: I'm your loyal companion - speak as "I" and refer to the student as "y
         if (loadingIndex !== -1) {
           newMessages[loadingIndex] = {
             role: 'ai',
-            text: 'Wow, that sounds like an exciting adventure! ✨ Tell me more about what Kaida should do next!',
+            text: 'Wow, that sounds like a delicious cosmic adventure! 🍪✨ Tell me more about what magical cookies London should bake next!',
             isLoading: false
           } as any;
         }
         return newMessages;
       });
-      appendStoryMessage({ role: 'ai', text: 'Wow, that sounds like an exciting adventure! ✨ Tell me more about what Kaida should do next!' });
+      appendStoryMessage({ role: 'ai', text: 'Wow, that sounds like a delicious cosmic adventure! 🍪✨ Tell me more about what magical cookies London should bake next!' });
     }
   };
 
@@ -642,7 +642,7 @@ Remember: I'm your loyal companion - speak as "I" and refer to the student as "y
                   <button onClick={() => {
                     setAdventureState('new');
                     setCurrentAdventure({});
-                    const greeting = "🎉 Hey there, brave adventurer! I'm your loyal sidekick, ready for an epic quest! What kind of adventure gets you excited - anime battles, mystical libraries, time magic, or something totally different? Let's create an amazing story together! ✨📚";
+                    const greeting = "🍪✨ Hey there, sweet adventurer! I'm your cosmic baking sidekick, ready for another magical journey to the moon! What kind of delicious adventure gets you excited - baking stardust cookies, exploring moon craters, meeting friendly aliens, or something totally different? Let's create an amazing sweet story together! 🌙👽";
                     updateAdventureMessages(prev => [...prev, { role: 'ai', text: greeting }]);
                     appendStoryMessage({ role: 'ai', text: greeting });
                   }} aria-label="New Adventure" style={{ width: 32, height: 32, borderRadius: 16, border: '2px solid rgba(245,158,11,0.3)', background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14 }} title="Start a new adventure">🎪</button>
