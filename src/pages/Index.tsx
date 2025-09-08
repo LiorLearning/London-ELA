@@ -46,8 +46,23 @@ import { testFirebaseStorage } from "@/lib/firebase-test";
 import { debugFirebaseAdventures, debugSaveTestAdventure, debugFirebaseConnection } from "@/lib/firebase-debug-adventures";
 import { autoMigrateOnLogin, forceMigrateUserData } from "@/lib/firebase-data-migration";
 
-import { getRandomSpellingQuestion, SpellingQuestion } from "@/lib/questionBankUtils";
+import { 
+  getRandomSpellingQuestion, 
+  getRandomCVCSpellingQuestion, 
+  getRandomCVCSpellingQuestionByDifficulty,
+  getCVCSpellingQuestionsFromBank,
+  SpellingQuestion 
+} from "@/lib/questionBankUtils";
+import { 
+  getSpellingConfig, 
+  updateSpellingConfig, 
+  getProgressiveDifficulty,
+  type SpellingConfig,
+  type SpellingMode,
+  type CVCDifficulty 
+} from "@/config/spelling-config";
 import FeedbackModal from "@/components/FeedbackModal";
+import SpellingSettings from "@/components/SpellingSettings";
 
 
 // Legacy user data interface for backwards compatibility
@@ -221,12 +236,55 @@ const Index = () => {
   // Track message cycle for 3-3 pattern (3 pure adventure, then 3 with spelling)
   const [messageCycleCount, setMessageCycleCount] = React.useState(0);
   
+  // Spelling configuration and tracking
+  const [spellingConfig, setSpellingConfig] = React.useState<SpellingConfig>(() => getSpellingConfig());
+  const [spellingStats, setSpellingStats] = React.useState({ correct: 0, total: 0 });
+  const [showSpellingSettings, setShowSpellingSettings] = React.useState(false);
+  
   // Initialize message cycle count based on existing messages
   React.useEffect(() => {
     // Count AI messages to determine current cycle position
     const aiMessageCount = chatMessages.filter(msg => msg.type === 'ai').length;
     setMessageCycleCount(aiMessageCount % 6);
   }, []); // Only run on mount
+  
+  // Function to get spelling question based on current configuration
+  const getConfiguredSpellingQuestion = React.useCallback((): SpellingQuestion | null => {
+    const config = spellingConfig;
+    
+    switch (config.mode) {
+      case 'cvc-only':
+        if (config.cvcDifficulty === 'progressive') {
+          const difficulty = getProgressiveDifficulty(spellingStats.correct, spellingStats.total);
+          console.log(`📈 Progressive difficulty: ${difficulty} (${spellingStats.correct}/${spellingStats.total})`);
+          return getRandomCVCSpellingQuestionByDifficulty(difficulty);
+        } else if (config.cvcDifficulty !== 'progressive') {
+          return getRandomCVCSpellingQuestionByDifficulty(config.cvcDifficulty);
+        } else {
+          return getRandomCVCSpellingQuestion();
+        }
+        
+      case 'cvc-mixed':
+        // 70% CVC words, 30% other words
+        const useCVC = Math.random() < 0.7;
+        if (useCVC) {
+          if (config.cvcDifficulty === 'progressive') {
+            const difficulty = getProgressiveDifficulty(spellingStats.correct, spellingStats.total);
+            return getRandomCVCSpellingQuestionByDifficulty(difficulty);
+          } else if (config.cvcDifficulty !== 'progressive') {
+            return getRandomCVCSpellingQuestionByDifficulty(config.cvcDifficulty);
+          } else {
+            return getRandomCVCSpellingQuestion();
+          }
+        } else {
+          return getRandomSpellingQuestion();
+        }
+        
+      case 'all':
+      default:
+        return getRandomSpellingQuestion();
+    }
+  }, [spellingConfig, spellingStats]);
   
   // Show onboarding if user is authenticated but hasn't completed setup
   const showOnboarding = user && userData && (userData.isFirstTime || !userData.grade);
@@ -1064,7 +1122,7 @@ const Index = () => {
         
         try {
           // Get current spelling question for context
-          const currentSpellingQuestion = getRandomSpellingQuestion();
+          const currentSpellingQuestion = getConfiguredSpellingQuestion();
           
           // Send message through unified system for image generation
           const unifiedResponse = await unifiedAIStreaming.sendMessage(
@@ -1372,7 +1430,7 @@ const Index = () => {
         
         // Implement 3-3 pattern: 3 pure adventure messages, then 3 with spelling questions
         const isSpellingPhase = messageCycleCount >= 3; // Messages 3, 4, 5 have spelling
-        const spellingQuestion = isSpellingPhase ? getRandomSpellingQuestion() : null;
+        const spellingQuestion = isSpellingPhase ? getConfiguredSpellingQuestion() : null;
         
         console.log(`🔄 Message cycle: ${messageCycleCount}/6, Phase: ${isSpellingPhase ? '📝 SPELLING' : '🏰 ADVENTURE'} (${messageCycleCount < 3 ? 'Pure Adventure' : 'Spelling Questions'})`);
         
@@ -3751,6 +3809,18 @@ const Index = () => {
           isOpen={showFeedbackModal}
           onClose={() => setShowFeedbackModal(false)}
           onSubmit={handleFeedbackSubmit}
+        />
+
+        {/* Spelling Settings Modal */}
+        <SpellingSettings
+          isOpen={showSpellingSettings}
+          onClose={() => setShowSpellingSettings(false)}
+          onConfigChange={(newConfig) => {
+            setSpellingConfig(newConfig);
+            console.log('📝 Spelling config updated:', newConfig);
+          }}
+          currentConfig={spellingConfig}
+          spellingStats={spellingStats}
         />
       </div>
     </div>
