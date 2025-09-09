@@ -1,431 +1,466 @@
-// CVC (Consonant-Vowel-Consonant) Spelling Words
-// Curated list of 3-letter words perfect for early spelling practice
+// Floss Rule and Soft C Spelling Words
+// Curated list of words with floss rule patterns (ff, ll, ss, zz) and soft c sounds
 
 export interface CVCSpellingWord {
   id: number;
   word: string;
-  vowel: 'a' | 'e' | 'i' | 'o' | 'u';
+  vowel: 'a' | 'e' | 'i' | 'o' | 'u' | 'y';
   difficulty: 'easy' | 'medium' | 'hard';
   hint: string;
   category: string;
   questionText: string;
   explanation: string;
+  pattern: 'floss_rule' | 'soft_c';
 }
 
 export const cvcSpellingWords: CVCSpellingWord[] = [
-  // Short A words (easy)
+  // Floss Rule Words - Double consonants after short vowels
   {
     id: 1,
-    word: 'cat',
-    vowel: 'a',
+    word: 'buzz',
+    vowel: 'u',
     difficulty: 'easy',
-    hint: 'A furry pet that meows',
-    category: 'animals',
-    questionText: 'Spell the word: A furry pet that says meow',
-    explanation: 'Great job! CAT is spelled C-A-T.'
+    hint: 'The sound a bee makes',
+    category: 'sounds',
+    questionText: 'Spell the word: The sound a bee makes',
+    explanation: 'Great job! BUZZ is spelled B-U-Z-Z with double Z.',
+    pattern: 'floss_rule'
   },
   {
     id: 2,
-    word: 'bat',
+    word: 'jazz',
     vowel: 'a',
-    difficulty: 'easy',
-    hint: 'A flying animal or sports equipment',
-    category: 'animals',
-    questionText: 'Spell the word: A flying animal that sleeps upside down',
-    explanation: 'Excellent! BAT is spelled B-A-T.'
+    difficulty: 'medium',
+    hint: 'A type of music with improvisation',
+    category: 'music',
+    questionText: 'Spell the word: A type of music that swings',
+    explanation: 'Excellent! JAZZ is spelled J-A-Z-Z with double Z.',
+    pattern: 'floss_rule'
   },
   {
     id: 3,
-    word: 'hat',
-    vowel: 'a',
-    difficulty: 'easy',
-    hint: 'You wear this on your head',
-    category: 'clothing',
-    questionText: 'Spell the word: Something you wear on your head',
-    explanation: 'Perfect! HAT is spelled H-A-T.'
+    word: 'fizz',
+    vowel: 'i',
+    difficulty: 'medium',
+    hint: 'The bubbling sound in soda',
+    category: 'sounds',
+    questionText: 'Spell the word: The bubbling sound in a carbonated drink',
+    explanation: 'Perfect! FIZZ is spelled F-I-Z-Z with double Z.',
+    pattern: 'floss_rule'
   },
   {
     id: 4,
-    word: 'mat',
-    vowel: 'a',
+    word: 'fuzz',
+    vowel: 'u',
     difficulty: 'easy',
-    hint: 'You wipe your feet on this',
-    category: 'objects',
-    questionText: 'Spell the word: You wipe your feet on this at the door',
-    explanation: 'Well done! MAT is spelled M-A-T.'
+    hint: 'Soft, fluffy hair or fiber',
+    category: 'textures',
+    questionText: 'Spell the word: Soft, fluffy hair on a peach',
+    explanation: 'Well done! FUZZ is spelled F-U-Z-Z with double Z.',
+    pattern: 'floss_rule'
   },
   {
     id: 5,
-    word: 'rat',
+    word: 'bass',
     vowel: 'a',
-    difficulty: 'easy',
-    hint: 'A small rodent with a long tail',
+    difficulty: 'medium',
+    hint: 'A type of fish or low musical notes',
     category: 'animals',
-    questionText: 'Spell the word: A small animal with a long tail',
-    explanation: 'Great work! RAT is spelled R-A-T.'
+    questionText: 'Spell the word: A fish that swimmers catch',
+    explanation: 'Great work! BASS is spelled B-A-S-S with double S.',
+    pattern: 'floss_rule'
   },
   {
     id: 6,
-    word: 'bag',
-    vowel: 'a',
+    word: 'boss',
+    vowel: 'o',
     difficulty: 'easy',
-    hint: 'You carry things in this',
-    category: 'objects',
-    questionText: 'Spell the word: You carry your lunch in this',
-    explanation: 'Awesome! BAG is spelled B-A-G.'
+    hint: 'The person in charge at work',
+    category: 'people',
+    questionText: 'Spell the word: The person who leads a team at work',
+    explanation: 'Awesome! BOSS is spelled B-O-S-S with double S.',
+    pattern: 'floss_rule'
   },
   {
     id: 7,
-    word: 'can',
-    vowel: 'a',
-    difficulty: 'easy',
-    hint: 'A metal container for food or drinks',
-    category: 'objects',
-    questionText: 'Spell the word: A metal container for soda',
-    explanation: 'Fantastic! CAN is spelled C-A-N.'
+    word: 'loss',
+    vowel: 'o',
+    difficulty: 'medium',
+    hint: 'The opposite of winning',
+    category: 'concepts',
+    questionText: 'Spell the word: When your team doesn\'t win the game',
+    explanation: 'Fantastic! LOSS is spelled L-O-S-S with double S.',
+    pattern: 'floss_rule'
   },
   {
     id: 8,
-    word: 'man',
-    vowel: 'a',
-    difficulty: 'easy',
-    hint: 'An adult male person',
-    category: 'people',
-    questionText: 'Spell the word: An adult male person',
-    explanation: 'Excellent! MAN is spelled M-A-N.'
+    word: 'moss',
+    vowel: 'o',
+    difficulty: 'medium',
+    hint: 'Green plant that grows on rocks and trees',
+    category: 'nature',
+    questionText: 'Spell the word: Green fuzzy plant on tree bark',
+    explanation: 'Excellent! MOSS is spelled M-O-S-S with double S.',
+    pattern: 'floss_rule'
   },
   {
     id: 9,
-    word: 'pan',
+    word: 'pass',
     vowel: 'a',
     difficulty: 'easy',
-    hint: 'You cook food in this',
-    category: 'objects',
-    questionText: 'Spell the word: You cook eggs in this',
-    explanation: 'Great job! PAN is spelled P-A-N.'
+    hint: 'To go by or succeed on a test',
+    category: 'actions',
+    questionText: 'Spell the word: To succeed on a test',
+    explanation: 'Great job! PASS is spelled P-A-S-S with double S.',
+    pattern: 'floss_rule'
   },
   {
     id: 10,
-    word: 'ran',
-    vowel: 'a',
+    word: 'kiss',
+    vowel: 'i',
     difficulty: 'easy',
-    hint: 'Past tense of run',
+    hint: 'A gentle touch with lips',
     category: 'actions',
-    questionText: 'Spell the word: What you did when you moved very fast',
-    explanation: 'Perfect! RAN is spelled R-A-N.'
+    questionText: 'Spell the word: A gentle touch with your lips',
+    explanation: 'Perfect! KISS is spelled K-I-S-S with double S.',
+    pattern: 'floss_rule'
   },
-
-  // Short E words (easy to medium)
   {
     id: 11,
-    word: 'bed',
-    vowel: 'e',
+    word: 'miss',
+    vowel: 'i',
     difficulty: 'easy',
-    hint: 'You sleep in this',
-    category: 'furniture',
-    questionText: 'Spell the word: Where you sleep at night',
-    explanation: 'Well done! BED is spelled B-E-D.'
+    hint: 'To fail to hit or to feel sad without someone',
+    category: 'actions',
+    questionText: 'Spell the word: To fail to catch a ball',
+    explanation: 'Well done! MISS is spelled M-I-S-S with double S.',
+    pattern: 'floss_rule'
   },
   {
     id: 12,
-    word: 'red',
+    word: 'bell',
     vowel: 'e',
     difficulty: 'easy',
-    hint: 'The color of fire trucks',
-    category: 'colors',
-    questionText: 'Spell the word: The color of strawberries',
-    explanation: 'Excellent! RED is spelled R-E-D.'
+    hint: 'Makes a ringing sound',
+    category: 'objects',
+    questionText: 'Spell the word: It rings to signal the end of class',
+    explanation: 'Excellent! BELL is spelled B-E-L-L with double L.',
+    pattern: 'floss_rule'
   },
   {
     id: 13,
-    word: 'pen',
+    word: 'cell',
     vowel: 'e',
-    difficulty: 'easy',
-    hint: 'You write with this',
-    category: 'objects',
-    questionText: 'Spell the word: You use this to write',
-    explanation: 'Great work! PEN is spelled P-E-N.'
+    difficulty: 'medium',
+    hint: 'A small room or basic unit of life',
+    category: 'science',
+    questionText: 'Spell the word: The basic building block of all living things',
+    explanation: 'Great work! CELL is spelled C-E-L-L with double L.',
+    pattern: 'floss_rule'
   },
   {
     id: 14,
-    word: 'ten',
+    word: 'fell',
     vowel: 'e',
     difficulty: 'easy',
-    hint: 'The number after nine',
-    category: 'numbers',
-    questionText: 'Spell the word: The number that comes after nine',
-    explanation: 'Fantastic! TEN is spelled T-E-N.'
+    hint: 'Past tense of fall',
+    category: 'actions',
+    questionText: 'Spell the word: What happened when you tripped',
+    explanation: 'Fantastic! FELL is spelled F-E-L-L with double L.',
+    pattern: 'floss_rule'
   },
   {
     id: 15,
-    word: 'hen',
+    word: 'tell',
     vowel: 'e',
     difficulty: 'easy',
-    hint: 'A female chicken',
-    category: 'animals',
-    questionText: 'Spell the word: A female chicken that lays eggs',
-    explanation: 'Perfect! HEN is spelled H-E-N.'
+    hint: 'To speak or share information',
+    category: 'actions',
+    questionText: 'Spell the word: To share a story with someone',
+    explanation: 'Perfect! TELL is spelled T-E-L-L with double L.',
+    pattern: 'floss_rule'
   },
   {
     id: 16,
-    word: 'net',
+    word: 'well',
     vowel: 'e',
-    difficulty: 'medium',
-    hint: 'Used to catch fish or play tennis',
+    difficulty: 'easy',
+    hint: 'A deep hole for water or feeling good',
     category: 'objects',
-    questionText: 'Spell the word: Fishermen use this to catch fish',
-    explanation: 'Awesome! NET is spelled N-E-T.'
+    questionText: 'Spell the word: A deep hole dug to find water',
+    explanation: 'Awesome! WELL is spelled W-E-L-L with double L.',
+    pattern: 'floss_rule'
   },
   {
     id: 17,
-    word: 'wet',
-    vowel: 'e',
-    difficulty: 'easy',
-    hint: 'Not dry, covered with water',
-    category: 'descriptions',
-    questionText: 'Spell the word: The opposite of dry',
-    explanation: 'Great job! WET is spelled W-E-T.'
+    word: 'bill',
+    vowel: 'i',
+    difficulty: 'medium',
+    hint: 'A duck\'s beak or money owed',
+    category: 'objects',
+    questionText: 'Spell the word: What you pay for electricity',
+    explanation: 'Great job! BILL is spelled B-I-L-L with double L.',
+    pattern: 'floss_rule'
   },
   {
     id: 18,
-    word: 'get',
-    vowel: 'e',
-    difficulty: 'medium',
-    hint: 'To obtain or receive something',
-    category: 'actions',
-    questionText: 'Spell the word: To receive or obtain something',
-    explanation: 'Excellent! GET is spelled G-E-T.'
-  },
-
-  // Short I words (medium)
-  {
-    id: 19,
-    word: 'big',
+    word: 'fill',
     vowel: 'i',
     difficulty: 'easy',
-    hint: 'Large in size',
-    category: 'descriptions',
-    questionText: 'Spell the word: Very large in size',
-    explanation: 'Well done! BIG is spelled B-I-G.'
+    hint: 'To make something full',
+    category: 'actions',
+    questionText: 'Spell the word: To put water in a glass',
+    explanation: 'Excellent! FILL is spelled F-I-L-L with double L.',
+    pattern: 'floss_rule'
+  },
+  {
+    id: 19,
+    word: 'hill',
+    vowel: 'i',
+    difficulty: 'easy',
+    hint: 'A small mountain',
+    category: 'nature',
+    questionText: 'Spell the word: A small raised area of land',
+    explanation: 'Well done! HILL is spelled H-I-L-L with double L.',
+    pattern: 'floss_rule'
   },
   {
     id: 20,
-    word: 'pig',
+    word: 'mill',
     vowel: 'i',
-    difficulty: 'easy',
-    hint: 'A farm animal that oinks',
-    category: 'animals',
-    questionText: 'Spell the word: A pink farm animal that says oink',
-    explanation: 'Perfect! PIG is spelled P-I-G.'
+    difficulty: 'medium',
+    hint: 'A building where grain is ground',
+    category: 'buildings',
+    questionText: 'Spell the word: Where wheat is ground into flour',
+    explanation: 'Perfect! MILL is spelled M-I-L-L with double L.',
+    pattern: 'floss_rule'
   },
   {
     id: 21,
-    word: 'sit',
+    word: 'pill',
     vowel: 'i',
-    difficulty: 'easy',
-    hint: 'To rest on a chair',
-    category: 'actions',
-    questionText: 'Spell the word: What you do on a chair',
-    explanation: 'Great work! SIT is spelled S-I-T.'
+    difficulty: 'medium',
+    hint: 'Medicine you swallow',
+    category: 'medicine',
+    questionText: 'Spell the word: Medicine that helps you feel better',
+    explanation: 'Great work! PILL is spelled P-I-L-L with double L.',
+    pattern: 'floss_rule'
   },
   {
     id: 22,
-    word: 'hit',
+    word: 'will',
     vowel: 'i',
     difficulty: 'medium',
-    hint: 'To strike something',
-    category: 'actions',
-    questionText: 'Spell the word: To strike a ball with a bat',
-    explanation: 'Excellent! HIT is spelled H-I-T.'
+    hint: 'Future tense helper or determination',
+    category: 'concepts',
+    questionText: 'Spell the word: Shows something will happen in the future',
+    explanation: 'Fantastic! WILL is spelled W-I-L-L with double L.',
+    pattern: 'floss_rule'
   },
   {
     id: 23,
-    word: 'fit',
-    vowel: 'i',
-    difficulty: 'medium',
-    hint: 'The right size or healthy',
-    category: 'descriptions',
-    questionText: 'Spell the word: When clothes are the right size',
-    explanation: 'Fantastic! FIT is spelled F-I-T.'
+    word: 'doll',
+    vowel: 'o',
+    difficulty: 'easy',
+    hint: 'A toy that looks like a person',
+    category: 'toys',
+    questionText: 'Spell the word: A toy baby that children play with',
+    explanation: 'Awesome! DOLL is spelled D-O-L-L with double L.',
+    pattern: 'floss_rule'
   },
   {
     id: 24,
-    word: 'win',
-    vowel: 'i',
-    difficulty: 'medium',
-    hint: 'To be victorious in a game',
-    category: 'actions',
-    questionText: 'Spell the word: To be first in a race',
-    explanation: 'Awesome! WIN is spelled W-I-N.'
+    word: 'full',
+    vowel: 'u',
+    difficulty: 'easy',
+    hint: 'Completely filled, not empty',
+    category: 'descriptions',
+    questionText: 'Spell the word: When a glass has no more room for water',
+    explanation: 'Great job! FULL is spelled F-U-L-L with double L.',
+    pattern: 'floss_rule'
   },
   {
     id: 25,
-    word: 'pin',
-    vowel: 'i',
-    difficulty: 'medium',
-    hint: 'A sharp fastener or bowling target',
-    category: 'objects',
-    questionText: 'Spell the word: A sharp object used to fasten things',
-    explanation: 'Great job! PIN is spelled P-I-N.'
+    word: 'pull',
+    vowel: 'u',
+    difficulty: 'easy',
+    hint: 'To drag something toward you',
+    category: 'actions',
+    questionText: 'Spell the word: To drag a wagon behind you',
+    explanation: 'Perfect! PULL is spelled P-U-L-L with double L.',
+    pattern: 'floss_rule'
   },
-
-  // Short O words (medium)
   {
     id: 26,
-    word: 'dog',
-    vowel: 'o',
-    difficulty: 'easy',
-    hint: 'A loyal pet that barks',
-    category: 'animals',
-    questionText: 'Spell the word: A furry pet that barks and wags its tail',
-    explanation: 'Perfect! DOG is spelled D-O-G.'
+    word: 'buff',
+    vowel: 'u',
+    difficulty: 'medium',
+    hint: 'Strong and muscular',
+    category: 'descriptions',
+    questionText: 'Spell the word: Very strong and muscular',
+    explanation: 'Excellent! BUFF is spelled B-U-F-F with double F.',
+    pattern: 'floss_rule'
   },
   {
     id: 27,
-    word: 'log',
-    vowel: 'o',
+    word: 'cuff',
+    vowel: 'u',
     difficulty: 'medium',
-    hint: 'A piece of wood from a tree',
-    category: 'objects',
-    questionText: 'Spell the word: A round piece of wood from a tree',
-    explanation: 'Well done! LOG is spelled L-O-G.'
+    hint: 'The end of a sleeve',
+    category: 'clothing',
+    questionText: 'Spell the word: The part of a shirt sleeve at your wrist',
+    explanation: 'Well done! CUFF is spelled C-U-F-F with double F.',
+    pattern: 'floss_rule'
   },
   {
     id: 28,
-    word: 'hot',
-    vowel: 'o',
+    word: 'puff',
+    vowel: 'u',
     difficulty: 'easy',
-    hint: 'Very warm temperature',
-    category: 'descriptions',
-    questionText: 'Spell the word: The opposite of cold',
-    explanation: 'Excellent! HOT is spelled H-O-T.'
+    hint: 'A small cloud or to blow air',
+    category: 'actions',
+    questionText: 'Spell the word: To blow air out of your mouth',
+    explanation: 'Great work! PUFF is spelled P-U-F-F with double F.',
+    pattern: 'floss_rule'
   },
+
+  // Soft C Words - C makes "s" sound before e, i, y
   {
     id: 29,
-    word: 'pot',
-    vowel: 'o',
+    word: 'city',
+    vowel: 'i',
     difficulty: 'easy',
-    hint: 'You cook soup in this',
-    category: 'objects',
-    questionText: 'Spell the word: A container used for cooking soup',
-    explanation: 'Great work! POT is spelled P-O-T.'
+    hint: 'A large town with many buildings',
+    category: 'places',
+    questionText: 'Spell the word: A large place where many people live',
+    explanation: 'Fantastic! CITY is spelled C-I-T-Y with soft C.',
+    pattern: 'soft_c'
   },
   {
     id: 30,
-    word: 'top',
-    vowel: 'o',
+    word: 'cent',
+    vowel: 'e',
     difficulty: 'medium',
-    hint: 'The highest part of something',
-    category: 'descriptions',
-    questionText: 'Spell the word: The highest part of a mountain',
-    explanation: 'Fantastic! TOP is spelled T-O-P.'
+    hint: 'One penny or one hundredth',
+    category: 'money',
+    questionText: 'Spell the word: One penny is worth one of these',
+    explanation: 'Awesome! CENT is spelled C-E-N-T with soft C.',
+    pattern: 'soft_c'
   },
   {
     id: 31,
-    word: 'box',
-    vowel: 'o',
+    word: 'cell',
+    vowel: 'e',
     difficulty: 'medium',
-    hint: 'A container with four sides',
-    category: 'objects',
-    questionText: 'Spell the word: A square container for storing things',
-    explanation: 'Awesome! BOX is spelled B-O-X.'
+    hint: 'A small room or basic unit of life',
+    category: 'science',
+    questionText: 'Spell the word: The basic building block of living things',
+    explanation: 'Great job! CELL is spelled C-E-L-L with soft C.',
+    pattern: 'soft_c'
   },
   {
     id: 32,
-    word: 'fox',
-    vowel: 'o',
-    difficulty: 'medium',
-    hint: 'A clever wild animal with a bushy tail',
+    word: 'mice',
+    vowel: 'i',
+    difficulty: 'easy',
+    hint: 'More than one mouse',
     category: 'animals',
-    questionText: 'Spell the word: A clever animal with red fur and a bushy tail',
-    explanation: 'Perfect! FOX is spelled F-O-X.'
+    questionText: 'Spell the word: Many small rodents',
+    explanation: 'Perfect! MICE is spelled M-I-C-E with soft C.',
+    pattern: 'soft_c'
   },
-
-  // Short U words (medium to hard)
   {
     id: 33,
-    word: 'sun',
-    vowel: 'u',
+    word: 'nice',
+    vowel: 'i',
     difficulty: 'easy',
-    hint: 'The bright star in our sky',
-    category: 'nature',
-    questionText: 'Spell the word: The bright star that gives us light',
-    explanation: 'Excellent! SUN is spelled S-U-N.'
+    hint: 'Kind and pleasant',
+    category: 'descriptions',
+    questionText: 'Spell the word: Kind and friendly',
+    explanation: 'Excellent! NICE is spelled N-I-C-E with soft C.',
+    pattern: 'soft_c'
   },
   {
     id: 34,
-    word: 'run',
-    vowel: 'u',
+    word: 'rice',
+    vowel: 'i',
     difficulty: 'easy',
-    hint: 'To move very fast on foot',
-    category: 'actions',
-    questionText: 'Spell the word: To move faster than walking',
-    explanation: 'Great job! RUN is spelled R-U-N.'
+    hint: 'White grains you eat with dinner',
+    category: 'food',
+    questionText: 'Spell the word: White grains often served with chicken',
+    explanation: 'Well done! RICE is spelled R-I-C-E with soft C.',
+    pattern: 'soft_c'
   },
   {
     id: 35,
-    word: 'fun',
-    vowel: 'u',
-    difficulty: 'easy',
-    hint: 'Something enjoyable and entertaining',
-    category: 'descriptions',
-    questionText: 'Spell the word: Something that makes you happy and laugh',
-    explanation: 'Well done! FUN is spelled F-U-N.'
+    word: 'dice',
+    vowel: 'i',
+    difficulty: 'medium',
+    hint: 'Cubes with dots used in games',
+    category: 'games',
+    questionText: 'Spell the word: Cubes you roll in board games',
+    explanation: 'Great work! DICE is spelled D-I-C-E with soft C.',
+    pattern: 'soft_c'
   },
   {
     id: 36,
-    word: 'cup',
-    vowel: 'u',
+    word: 'face',
+    vowel: 'a',
     difficulty: 'easy',
-    hint: 'You drink from this',
-    category: 'objects',
-    questionText: 'Spell the word: A small container for drinking',
-    explanation: 'Perfect! CUP is spelled C-U-P.'
+    hint: 'The front of your head',
+    category: 'body',
+    questionText: 'Spell the word: Where your eyes, nose, and mouth are',
+    explanation: 'Fantastic! FACE is spelled F-A-C-E with soft C.',
+    pattern: 'soft_c'
   },
   {
     id: 37,
-    word: 'bug',
-    vowel: 'u',
-    difficulty: 'medium',
-    hint: 'A small insect',
-    category: 'animals',
-    questionText: 'Spell the word: A tiny crawling creature',
-    explanation: 'Fantastic! BUG is spelled B-U-G.'
+    word: 'race',
+    vowel: 'a',
+    difficulty: 'easy',
+    hint: 'A competition to see who is fastest',
+    category: 'sports',
+    questionText: 'Spell the word: A competition to see who runs fastest',
+    explanation: 'Awesome! RACE is spelled R-A-C-E with soft C.',
+    pattern: 'soft_c'
   },
   {
     id: 38,
-    word: 'hug',
-    vowel: 'u',
+    word: 'lace',
+    vowel: 'a',
     difficulty: 'medium',
-    hint: 'A warm embrace',
-    category: 'actions',
-    questionText: 'Spell the word: A warm squeeze with your arms',
-    explanation: 'Awesome! HUG is spelled H-U-G.'
+    hint: 'Delicate fabric or shoe strings',
+    category: 'clothing',
+    questionText: 'Spell the word: The strings that tie your shoes',
+    explanation: 'Great job! LACE is spelled L-A-C-E with soft C.',
+    pattern: 'soft_c'
   },
   {
     id: 39,
-    word: 'mud',
-    vowel: 'u',
+    word: 'pace',
+    vowel: 'a',
     difficulty: 'medium',
-    hint: 'Wet dirt',
-    category: 'nature',
-    questionText: 'Spell the word: What you get when you mix dirt and water',
-    explanation: 'Great work! MUD is spelled M-U-D.'
+    hint: 'The speed of walking or running',
+    category: 'actions',
+    questionText: 'Spell the word: How fast or slow you walk',
+    explanation: 'Perfect! PACE is spelled P-A-C-E with soft C.',
+    pattern: 'soft_c'
   },
   {
     id: 40,
-    word: 'bus',
-    vowel: 'u',
+    word: 'once',
+    vowel: 'o',
     difficulty: 'medium',
-    hint: 'A large vehicle that carries many people',
-    category: 'vehicles',
-    questionText: 'Spell the word: A big yellow vehicle that takes kids to school',
-    explanation: 'Excellent! BUS is spelled B-U-S.'
+    hint: 'One time only',
+    category: 'concepts',
+    questionText: 'Spell the word: One time, not twice',
+    explanation: 'Excellent! ONCE is spelled O-N-C-E with soft C.',
+    pattern: 'soft_c'
   }
 ];
 
-// Helper functions for filtering and selecting CVC words
-export const getCVCWordsByVowel = (vowel: 'a' | 'e' | 'i' | 'o' | 'u'): CVCSpellingWord[] => {
+// Helper functions for filtering and selecting spelling words
+export const getCVCWordsByVowel = (vowel: 'a' | 'e' | 'i' | 'o' | 'u' | 'y'): CVCSpellingWord[] => {
   return cvcSpellingWords.filter(word => word.vowel === vowel);
 };
 
@@ -437,6 +472,18 @@ export const getCVCWordsByCategory = (category: string): CVCSpellingWord[] => {
   return cvcSpellingWords.filter(word => word.category === category);
 };
 
+export const getCVCWordsByPattern = (pattern: 'floss_rule' | 'soft_c'): CVCSpellingWord[] => {
+  return cvcSpellingWords.filter(word => word.pattern === pattern);
+};
+
+export const getFlossRuleWords = (): CVCSpellingWord[] => {
+  return getCVCWordsByPattern('floss_rule');
+};
+
+export const getSoftCWords = (): CVCSpellingWord[] => {
+  return getCVCWordsByPattern('soft_c');
+};
+
 export const getRandomCVCWord = (): CVCSpellingWord => {
   const randomIndex = Math.floor(Math.random() * cvcSpellingWords.length);
   return cvcSpellingWords[randomIndex];
@@ -444,6 +491,12 @@ export const getRandomCVCWord = (): CVCSpellingWord => {
 
 export const getRandomCVCWordByDifficulty = (difficulty: 'easy' | 'medium' | 'hard'): CVCSpellingWord => {
   const filteredWords = getCVCWordsByDifficulty(difficulty);
+  const randomIndex = Math.floor(Math.random() * filteredWords.length);
+  return filteredWords[randomIndex];
+};
+
+export const getRandomWordByPattern = (pattern: 'floss_rule' | 'soft_c'): CVCSpellingWord => {
+  const filteredWords = getCVCWordsByPattern(pattern);
   const randomIndex = Math.floor(Math.random() * filteredWords.length);
   return filteredWords[randomIndex];
 };
